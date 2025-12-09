@@ -1,0 +1,120 @@
+[
+  {
+    "startLat": 36.945,
+    "startLng": -76.3133,
+    "endLat": 49.4397,
+    "endLng": 7.6014,
+    "from": "Naval Station Norfolk",
+    "to": "Ramstein Air Base",
+    "order": 0
+  },
+  {
+    "startLat": 47.1087,
+    "startLng": -122.5588,
+    "endLat": 21.3469,
+    "endLng": -157.9397,
+    "from": "Joint Base Lewis-McChord",
+    "to": "Joint Base Pearl Harbor-Hickam",
+    "order": 0
+  },
+  {
+    "startLat": 49.4397,
+    "startLng": 7.6014,
+    "endLat": 46.0319,
+    "endLng": 12.5965,
+    "from": "Ramstein Air Base",
+    "to": "Aviano Air Base",
+    "order": 1
+  },
+  {
+    "startLat": 49.4397,
+    "startLng": 7.6014,
+    "endLat": 52.4093,
+    "endLng": 0.5608,
+    "from": "Ramstein Air Base",
+    "to": "RAF Lakenheath",
+    "order": 1
+  },
+  {
+    "startLat": 49.4397,
+    "startLng": 7.6014,
+    "endLat": 11.5395,
+    "endLng": 43.1425,
+    "from": "Ramstein Air Base",
+    "to": "Camp Lemonnier",
+    "order": 1
+  },
+  {
+    "startLat": 21.3469,
+    "startLng": -157.9397,
+    "endLat": 13.5753,
+    "endLng": 144.9213,
+    "from": "Joint Base Pearl Harbor-Hickam",
+    "to": "Andersen AFB",
+    "order": 1
+  },
+  {
+    "startLat": 49.4397,
+    "startLng": 7.6014,
+    "endLat": 25.117,
+    "endLng": 51.3088,
+    "from": "Ramstein Air Base",
+    "to": "Al Udeid Air Base",
+    "order": 2
+  },
+  {
+    "startLat": 13.5753,
+    "startLng": 144.9213,
+    "endLat": 36.9667,
+    "endLng": 127.0333,
+    "from": "Andersen AFB",
+    "to": "Camp Humphreys",
+    "order": 2
+  },
+  {
+    "startLat": 13.5753,
+    "startLng": 144.9213,
+    "endLat": 26.351,
+    "endLng": 127.7683,
+    "from": "Andersen AFB",
+    "to": "Kadena Air Base",
+    "order": 2
+  },
+  {
+    "startLat": 13.5753,
+    "startLng": 144.9213,
+    "endLat": 35.2814,
+    "endLng": 139.6722,
+    "from": "Andersen AFB",
+    "to": "Naval Base Yokosuka",
+    "order": 2
+  },
+  {
+    "startLat": 36.945,
+    "startLng": -76.3133,
+    "endLat": 19.9,
+    "endLng": -75.15,
+    "from": "Naval Station Norfolk",
+    "to": "Guantanamo Bay",
+    "order": 3
+  },
+  {
+    "startLat": 35.139,
+    "startLng": -79.006,
+    "endLat": 49.4397,
+    "endLng": 7.6014,
+    "from": "Fort Liberty",
+    "to": "Ramstein Air Base",
+    "order": 0
+  },
+  {
+    "startLat": 31.1349,
+    "startLng": -97.7756,
+    "endLat": 25.117,
+    "endLng": 51.3088,
+    "from": "Fort Hood",
+    "to": "Al Udeid Air Base",
+    "order": 1,
+    "arcAlt": 0.4
+  }
+]

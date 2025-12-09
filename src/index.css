@@ -1,0 +1,99 @@
+/* Import Onebrief design tokens */
+@import './tokens.css';
+
+/* Tailwind CSS */
+@import "tailwindcss";
+
+/* Map Onebrief tokens to Tailwind theme */
+@theme {
+  /* Colors - map our tokens to Tailwind color scale */
+  --color-surface-primary: var(--color-surface-primary);
+  --color-surface-secondary: var(--color-surface-secondary);
+  --color-surface-tertiary: var(--color-surface-tertiary);
+  --color-surface-elevated: var(--color-surface-elevated);
+
+  --color-text-primary: var(--color-text-primary);
+  --color-text-secondary: var(--color-text-secondary);
+  --color-text-muted: var(--color-text-muted);
+
+  --color-accent-primary: var(--color-accent-primary);
+  --color-accent-secondary: var(--color-accent-secondary);
+
+  --color-border: var(--color-border);
+  --color-border-hover: var(--color-border-hover);
+
+  /* Font families */
+  --font-family-display: var(--font-display);
+  --font-family-body: var(--font-body);
+  --font-family-mono: var(--font-mono);
+
+  /* Font sizes - use arbitrary values like text-[var(--text-100)] */
+  /* The --text-* variables are already defined in tokens.css */
+
+  /* Font weights */
+  --font-weight-light: var(--font-weight-light);
+  --font-weight-regular: var(--font-weight-regular);
+  --font-weight-medium: var(--font-weight-medium);
+  --font-weight-semibold: var(--font-weight-semibold);
+  --font-weight-bold: var(--font-weight-bold);
+
+  /* Spacing - map to Tailwind spacing scale */
+  --spacing-10: var(--space-10);
+  --spacing-12: var(--space-12);
+  --spacing-14: var(--space-14);
+  --spacing-16: var(--space-16);
+  --spacing-20: var(--space-20);
+  --spacing-24: var(--space-24);
+  --spacing-28: var(--space-28);
+  --spacing-32: var(--space-32);
+  --spacing-36: var(--space-36);
+  --spacing-48: var(--space-48);
+  --spacing-52: var(--space-52);
+  --spacing-60: var(--space-60);
+  --spacing-100: var(--space-100);
+
+  /* Border radius */
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+}
+
+/* Base styles */
+html {
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-surface-primary);
+  color: var(--color-text-primary);
+  transition: background-color var(--duration-normal) var(--ease-default),
+              color var(--duration-normal) var(--ease-default);
+}
+
+/* Custom utility classes for typography sizes */
+.text-hero {
+  font-family: var(--font-display);
+  font-size: var(--text-60);
+  line-height: 72px; /* 60px + 12px */
+}
+
+.text-subtitle {
+  font-family: var(--font-body);
+  font-size: var(--text-20);
+}
+
+@media (min-width: 768px) {
+  .text-hero {
+    font-size: var(--text-100);
+    line-height: 112px; /* 100px + 12px */
+  }
+
+  .text-subtitle {
+    font-size: var(--text-24);
+  }
+}

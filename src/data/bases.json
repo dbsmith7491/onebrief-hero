@@ -1,0 +1,121 @@
+[
+  {
+    "lat": 36.9667,
+    "lng": 127.0333,
+    "name": "Camp Humphreys",
+    "size": 0.4,
+    "color": "#ffffff",
+    "ringPropagationSpeed": 3
+  },
+  {
+    "lat": 35.139,
+    "lng": -79.006,
+    "name": "Fort Liberty",
+    "size": 0.4,
+    "color": "#ffffff",
+    "ringPropagationSpeed": 3
+  },
+  {
+    "lat": 31.1349,
+    "lng": -97.7756,
+    "name": "Fort Hood",
+    "size": 0.4,
+    "color": "#ffffff",
+    "ringPropagationSpeed": 3
+  },
+  {
+    "lat": 47.1087,
+    "lng": -122.5588,
+    "name": "Joint Base Lewis-McChord",
+    "size": 0.35,
+    "color": "#ffffff"
+  },
+  {
+    "lat": 49.4397,
+    "lng": 7.6014,
+    "name": "Ramstein Air Base",
+    "size": 0.35,
+    "color": "#ffffff",
+    "ringPropagationSpeed": 3
+  },
+  {
+    "lat": 36.945,
+    "lng": -76.3133,
+    "name": "Naval Station Norfolk",
+    "size": 0.4,
+    "color": "#ffffff",
+    "ringPropagationSpeed": 3
+  },
+  {
+    "lat": 26.351,
+    "lng": 127.7683,
+    "name": "Kadena Air Base",
+    "size": 0.35,
+    "color": "#ffffff",
+    "ringPropagationSpeed": 3
+  },
+  {
+    "lat": 25.117,
+    "lng": 51.3088,
+    "name": "Al Udeid Air Base",
+    "size": 0.35,
+    "color": "#ffffff",
+    "ringPropagationSpeed": 3
+  },
+  {
+    "lat": 13.5753,
+    "lng": 144.9213,
+    "name": "Andersen AFB",
+    "size": 0.35,
+    "color": "#ffffff",
+    "ringPropagationSpeed": 3
+  },
+  {
+    "lat": 19.9,
+    "lng": -75.15,
+    "name": "Guantanamo Bay",
+    "size": 0.3,
+    "color": "#ffffff",
+    "ringPropagationSpeed": 3
+  },
+  {
+    "lat": 11.5395,
+    "lng": 43.1425,
+    "name": "Camp Lemonnier",
+    "size": 0.3,
+    "color": "#ffffff",
+    "ringPropagationSpeed": 3
+  },
+  {
+    "lat": 46.0319,
+    "lng": 12.5965,
+    "name": "Aviano Air Base",
+    "size": 0.3,
+    "color": "#ffffff",
+    "ringPropagationSpeed": 3
+  },
+  {
+    "lat": 35.2814,
+    "lng": 139.6722,
+    "name": "Naval Base Yokosuka",
+    "size": 0.35,
+    "color": "#ffffff",
+    "ringPropagationSpeed": 3
+  },
+  {
+    "lat": 52.4093,
+    "lng": 0.5608,
+    "name": "RAF Lakenheath",
+    "size": 0.3,
+    "color": "#ffffff",
+    "ringPropagationSpeed": 3
+  },
+  {
+    "lat": 21.3469,
+    "lng": -157.9397,
+    "name": "Joint Base Pearl Harbor-Hickam",
+    "size": 0.4,
+    "color": "#ffffff",
+    "ringPropagationSpeed": 3
+  }
+]
