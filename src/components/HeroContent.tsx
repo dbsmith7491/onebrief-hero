@@ -53,23 +53,22 @@ export function HeroContent({
     <>
       {/* Gradient layer - between vector field (z:0) and globe (z:2) */}
       <div
-        className="hidden md:flex absolute inset-0 pointer-events-none h-full flex-col justify-center px-4 md:px-8 lg:px-12 xl:px-16 2xl:px-20"
+        className="hidden md:flex absolute inset-0 pointer-events-none h-full flex-col justify-center"
         style={{ zIndex: 1 }}
       >
-        <div
-          className="py-24 pr-20 -ml-4 md:-ml-8 lg:-ml-12 xl:-ml-16 2xl:-ml-20 p-4 md:p-8 lg:p-12 xl:p-16 2xl:p-20 w-fit"
-          style={{ background: gradientBg }}
-        >
-          {/* Invisible content to size the gradient */}
-          <div className="invisible">
-            <h1 className="text-hero font-regular mb-20 text-left">
-              {titleElements}
-            </h1>
-            {subtitle && (
-              <p className="text-sm font-light max-w-xs text-left">
-                {subtitle}
-              </p>
-            )}
+        <div className="container mx-auto h-full flex flex-col justify-center">
+          <div className="py-24 pr-20 w-fit" style={{ background: gradientBg }}>
+            {/* Invisible content to size the gradient */}
+            <div className="invisible">
+              <h1 className="text-hero font-regular mb-20 text-left">
+                {titleElements}
+              </h1>
+              {subtitle && (
+                <p className="text-sm font-light max-w-xs text-left">
+                  {subtitle}
+                </p>
+              )}
+            </div>
           </div>
         </div>
       </div>
@@ -79,9 +78,9 @@ export function HeroContent({
         className="absolute inset-0 pointer-events-none"
         style={{ zIndex: 3 }}
       >
-        <div className="container mx-auto h-full px-4 md:px-8 lg:px-12 xl:px-16 2xl:px-20">
+        <div className="container mx-auto h-full">
           {/* Mobile: Vertically centered, no gradient */}
-          <div className="md:hidden h-full flex flex-col justify-center text-center">
+          <div className="md:hidden h-full flex flex-col justify-center text-center px-4">
             <h1
               className="text-hero font-regular mb-16"
               style={{ color: colors.title }}
@@ -100,7 +99,7 @@ export function HeroContent({
 
           {/* Desktop: Left-aligned, vertically centered */}
           <div className="hidden md:flex h-full flex-col justify-center">
-            <div className="py-24 pr-20 -ml-4 md:-ml-8 lg:-ml-12 xl:-ml-16 2xl:-ml-20 p-4 md:p-8 lg:p-12 xl:p-16 2xl:p-20 w-fit">
+            <div className="w-fit">
               <h1
                 className="text-hero font-regular mb-20 text-left"
                 style={{ color: colors.title }}
