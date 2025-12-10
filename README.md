@@ -140,9 +140,9 @@ After passing the implementation plan to Claude Code, the first working build pr
 ![Light mode](./public/claude-code-initial-light.png)
 ![Dark mode](./public/claude-code-initial-dark.png)
 
-Globe rendering, arc animations, vector field, theme toggle, and controls all functional on first pass. From here I iterated on visual polish and edge cases.
+Globe rendering, arc animations, vector field, theme toggle, and controls all functional on first pass. From here I iterated on visual polish and edge cases. I ended up restructuring project folders quite a bit and abstracting logic into hooks for easier maintenance.
 
-AI accelerated research, planning, and boilerplate; judgment calls (brand direction, visual hierarchy, what to cut) and final polish were mine.
+AI accelerated research, planning, and boilerplate; judgment calls (brand direction, visual hierarchy, what to cut) and final polish and optimizations were mine.
 
 ## Performance & Accessibility
 
