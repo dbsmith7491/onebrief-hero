@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import arcsData from "../data/arcs.json";
-import type { Arc } from "../types";
+import { adjustOpacity } from "../utils/colorUtils";
+import type { Arc, Theme } from "../types";
 
 export interface RingData {
   lat: number;
@@ -10,11 +11,21 @@ export interface RingData {
   repeatPeriod: number;
 }
 
+interface MotionColors {
+  darkRingColor: string;
+  lightRingColor: string;
+}
+
 /**
  * Hook to manage ring animations that pulse at arc endpoints
  * 3 rings pulse at sender AND receiver, then arc fires
+ * Also provides the ringColor callback for theme-aware fading
  */
-export function useRingAnimation(motionEnabled: boolean) {
+export function useRingAnimation(
+  motionEnabled: boolean,
+  theme: Theme,
+  motionColors: MotionColors
+) {
   const [activeRings, setActiveRings] = useState<RingData[]>([]);
 
   useEffect(() => {
@@ -108,5 +119,26 @@ export function useRingAnimation(motionEnabled: boolean) {
     };
   }, [motionEnabled]);
 
-  return activeRings;
+  // Ring color callback - fades as ring expands
+  // ringColor must be a function that returns a function: (ring) => (t) => color
+  // where t is the progress from 0 (start) to 1 (fully expanded)
+  const ringColor = useCallback(
+    (_ring: any) => {
+      const baseColor =
+        theme === "dark"
+          ? motionColors.darkRingColor
+          : motionColors.lightRingColor;
+
+      // Return a function that receives t (progress 0 to 1)
+      return (t: number) => {
+        // t is the progress from 0 (start) to 1 (fully expanded)
+        // Fade from full opacity to 0 as ring expands
+        const opacity = Math.max(0, 1 - t);
+        return adjustOpacity(baseColor, opacity);
+      };
+    },
+    [theme, motionColors]
+  );
+
+  return { activeRings, ringColor };
 }

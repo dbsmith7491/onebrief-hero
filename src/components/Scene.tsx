@@ -1,18 +1,17 @@
 import Globe from "react-globe.gl";
-import { useRef, useMemo, useCallback } from "react";
-import arcsData from "../data/arcs.json";
+import { useRef, useMemo } from "react";
 import { generateGlobeTexture } from "../utils/generateGlobeTexture";
 import { createGlobeMaterial } from "../utils/globeMaterial";
-import { hexToRgba, adjustOpacity } from "../utils/colorUtils";
 import { useStats } from "../hooks/useStats";
 import { useGlobeOutline } from "../hooks/useGlobeOutline";
 import { useGlobeControls } from "../hooks/useGlobeControls";
+import { useArcAnimation } from "../hooks/useArcAnimation";
 import { useRingAnimation } from "../hooks/useRingAnimation";
 import { useLevaVisibility } from "../hooks/useLevaVisibility";
 import { useGlobeSetup } from "../hooks/useGlobeSetup";
 import { useWindowResize } from "../hooks/useWindowResize";
 import { useGlobeOutlineConfig } from "../hooks/useGlobeOutlineConfig";
-import type { Arc, Theme } from "../types";
+import type { Theme } from "../types";
 
 interface SceneProps {
   motionEnabled: boolean;
@@ -39,39 +38,14 @@ export function Scene({ motionEnabled, theme, showDebugger }: SceneProps) {
     [globeTextureCanvas]
   );
 
-  // Arc colors based on theme
-  const allArcs = useMemo(() => {
-    const arcColor =
-      theme === "dark" ? motionColors.darkArcColor : motionColors.lightArcColor;
-    const arcColorRgba = hexToRgba(arcColor, 1.0);
-    return (arcsData as Arc[]).map((arc) => ({
-      ...arc,
-      color: arcColorRgba,
-    }));
-  }, [theme, motionColors]);
+  // Arc animation management (includes color)
+  const allArcs = useArcAnimation(theme, motionColors);
 
-  // Ring animation management
-  const activeRings = useRingAnimation(motionEnabled);
-
-  // Ring color callback - fades as ring expands
-  // ringColor must be a function that returns a function: (ring) => (t) => color
-  // where t is the progress from 0 (start) to 1 (fully expanded)
-  const ringColor = useCallback(
-    (_ring: any) => {
-      const baseColor =
-        theme === "dark"
-          ? motionColors.darkRingColor
-          : motionColors.lightRingColor;
-
-      // Return a function that receives t (progress 0 to 1)
-      return (t: number) => {
-        // t is the progress from 0 (start) to 1 (fully expanded)
-        // Fade from full opacity to 0 as ring expands
-        const opacity = Math.max(0, 1 - t);
-        return adjustOpacity(baseColor, opacity);
-      };
-    },
-    [theme, motionColors]
+  // Ring animation management (includes color callback)
+  const { activeRings, ringColor } = useRingAnimation(
+    motionEnabled,
+    theme,
+    motionColors
   );
 
   // Globe setup: camera, controls, lights, material
