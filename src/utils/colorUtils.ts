@@ -18,3 +18,26 @@ export function hexToRgba(hex: string, opacity: number): string {
 export function hexToNumber(hex: string): number {
   return parseInt(hex.replace("#", ""), 16);
 }
+
+/**
+ * Adjusts the opacity of an rgba or hex color string
+ * Handles both rgba() and hex (#) color formats
+ */
+export function adjustOpacity(color: string, opacity: number): string {
+  if (color.startsWith("rgba")) {
+    // Already rgba, extract and update opacity
+    const rgbaMatch = color.match(/rgba?\(([^)]+)\)/);
+    if (rgbaMatch) {
+      const parts = rgbaMatch[1].split(",").map((s) => s.trim());
+      const baseOpacity = parts.length > 3 ? parseFloat(parts[3]) : 1;
+      const finalOpacity = opacity * baseOpacity;
+      return `rgba(${parts[0]}, ${parts[1]}, ${parts[2]}, ${finalOpacity.toFixed(3)})`;
+    }
+  } else if (color.startsWith("#")) {
+    // Hex color, convert to rgba with opacity
+    return hexToRgba(color, opacity);
+  }
+
+  // Fallback: return color as-is
+  return color;
+}

@@ -28,27 +28,6 @@ export function HeroContent({
     [colors.gradient]
   );
 
-  // Memoize title rendering
-  const titleElements = useMemo(
-    () =>
-      title.map((word, i) => (
-        <span key={i} className="block">
-          {word}
-        </span>
-      )),
-    [title]
-  );
-
-  const titleElementsInline = useMemo(
-    () =>
-      title.map((word, i) => (
-        <span key={i} className="inline-block">
-          {word}
-        </span>
-      )),
-    [title]
-  );
-
   return (
     <>
       {/* Text content layer - above globe */}
