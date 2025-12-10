@@ -10,7 +10,6 @@ import { useRingAnimation } from "../hooks/useRingAnimation";
 import { useLevaVisibility } from "../hooks/useLevaVisibility";
 import { useGlobeSetup } from "../hooks/useGlobeSetup";
 import { useWindowResize } from "../hooks/useWindowResize";
-import { useGlobeOutlineConfig } from "../hooks/useGlobeOutlineConfig";
 import type { Theme } from "../types";
 
 interface SceneProps {
@@ -57,15 +56,10 @@ export function Scene({ motionEnabled, theme, showDebugger }: SceneProps) {
   // Hide/show Leva controls panel
   useLevaVisibility(showDebugger);
 
-  // Globe outline configuration
-  const { outlineColor, outlineThickness } = useGlobeOutlineConfig(
-    theme,
-    outlineControls
-  );
-
+  // Globe outline with theme-based color and thickness
   useGlobeOutline(globeEl, {
-    color: outlineColor,
-    edgeThickness: outlineThickness,
+    theme,
+    outlineControls,
     dimensions,
   });
 

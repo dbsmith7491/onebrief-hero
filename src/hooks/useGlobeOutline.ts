@@ -1,30 +1,55 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useMemo } from "react";
 import * as THREE from "three";
 import { OutlinePass } from "three/examples/jsm/postprocessing/OutlinePass.js";
+import { hexToNumber } from "../utils/colorUtils";
+import type { Theme } from "../types";
+
+interface OutlineControls {
+  darkOutlineColor: string;
+  darkOutlineThickness: number;
+  lightOutlineColor: string;
+  lightOutlineThickness: number;
+}
 
 interface UseGlobeOutlineOptions {
-  color: number;
-  edgeThickness?: number;
+  theme: Theme;
+  outlineControls: OutlineControls;
+  dimensions: { width: number; height: number };
   edgeStrength?: number;
   edgeGlow?: number;
-  dimensions: { width: number; height: number };
 }
 
 /**
  * Hook to add an outline effect around the globe using OutlinePass.
+ * Computes theme-based color and thickness, then applies the outline effect.
  * Polls for globe readiness and adds the pass to the postProcessingComposer.
  */
 export function useGlobeOutline(
   globeEl: React.RefObject<any>,
   {
-    color,
-    edgeThickness = 1,
+    theme,
+    outlineControls,
+    dimensions,
     edgeStrength = 1,
     edgeGlow = 0,
-    dimensions,
   }: UseGlobeOutlineOptions
 ) {
   const outlinePassRef = useRef<OutlinePass | null>(null);
+
+  // Compute theme-based color and thickness
+  const color = useMemo(() => {
+    const colorHex =
+      theme === "dark"
+        ? outlineControls.darkOutlineColor
+        : outlineControls.lightOutlineColor;
+    return hexToNumber(colorHex);
+  }, [theme, outlineControls]);
+
+  const edgeThickness = useMemo(() => {
+    return theme === "dark"
+      ? outlineControls.darkOutlineThickness
+      : outlineControls.lightOutlineThickness;
+  }, [theme, outlineControls]);
 
   useEffect(() => {
     // Update properties if outline pass exists
