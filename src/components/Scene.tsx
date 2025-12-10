@@ -53,12 +53,47 @@ export function Scene({ motionEnabled, theme, showDebugger }: SceneProps) {
   // Ring animation management
   const activeRings = useRingAnimation(motionEnabled);
 
-  // Ring color callback
+  // Ring color callback - fades as ring expands
+  // ringColor must be a function that returns a function: (ring) => (t) => color
+  // where t is the progress from 0 (start) to 1 (fully expanded)
   const ringColor = useCallback(
-    () =>
-      theme === "dark"
-        ? motionColors.darkRingColor
-        : motionColors.lightRingColor,
+    (ring: any) => {
+      const baseColor =
+        theme === "dark"
+          ? motionColors.darkRingColor
+          : motionColors.lightRingColor;
+
+      // Return a function that receives t (progress 0 to 1)
+      return (t: number) => {
+        // t is the progress from 0 (start) to 1 (fully expanded)
+        // Fade from full opacity to 0 as ring expands
+        const opacity = Math.max(0, 1 - t);
+
+        // Extract RGB from base color and apply opacity
+        if (baseColor.startsWith("rgba")) {
+          // Already rgba, extract and update opacity
+          const rgbaMatch = baseColor.match(/rgba?\(([^)]+)\)/);
+          if (rgbaMatch) {
+            const parts = rgbaMatch[1].split(",").map((s) => s.trim());
+            const baseOpacity = parts.length > 3 ? parseFloat(parts[3]) : 1;
+            const finalOpacity = opacity * baseOpacity;
+            return `rgba(${parts[0]}, ${parts[1]}, ${
+              parts[2]
+            }, ${finalOpacity.toFixed(3)})`;
+          }
+        } else if (baseColor.startsWith("#")) {
+          // Hex color, convert to rgba with opacity
+          const hex = baseColor.slice(1);
+          const r = parseInt(hex.slice(0, 2), 16);
+          const g = parseInt(hex.slice(2, 4), 16);
+          const b = parseInt(hex.slice(4, 6), 16);
+          return `rgba(${r}, ${g}, ${b}, ${opacity.toFixed(3)})`;
+        }
+
+        // Fallback: return base color as-is
+        return baseColor;
+      };
+    },
     [theme, motionColors]
   );
 

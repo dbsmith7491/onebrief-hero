@@ -27,7 +27,7 @@ export function Controls({
     >
       {/* White control bar with depth */}
       <div
-        className="bg-white rounded-2xl px-4 py-2 flex items-center gap-4 shadow-lg"
+        className="bg-white rounded-2xl px-3 py-0 flex items-center gap-4 shadow-lg"
         style={{
           boxShadow:
             "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)",

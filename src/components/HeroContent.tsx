@@ -51,69 +51,39 @@ export function HeroContent({
 
   return (
     <>
-      {/* Gradient layer - between vector field (z:0) and globe (z:2) */}
-      <div
-        className="hidden md:flex absolute inset-0 pointer-events-none h-full flex-col justify-center"
-        style={{ zIndex: 1 }}
-      >
-        <div className="container mx-auto h-full flex flex-col justify-center">
-          <div className="py-24 pr-20 w-fit" style={{ background: gradientBg }}>
-            {/* Invisible content to size the gradient */}
-            <div className="invisible">
-              <h1 className="text-hero font-regular mb-20 text-left">
-                {titleElements}
-              </h1>
-              {subtitle && (
-                <p className="text-sm font-light max-w-xs text-left">
-                  {subtitle}
-                </p>
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* Text content layer - above globe */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{ zIndex: 3 }}
-      >
-        <div className="container mx-auto h-full">
-          {/* Mobile: Vertically centered, no gradient */}
-          <div className="md:hidden h-full flex flex-col justify-center text-center px-4">
-            <h1
-              className="text-hero font-regular mb-16"
-              style={{ color: colors.title }}
-            >
-              {titleElementsInline}
-            </h1>
-            {subtitle && (
-              <p
-                className="text-sm font-light max-w-xs mx-auto"
-                style={{ color: colors.subtitle }}
+      <div className="relative h-full pointer-events-none">
+        <div className="h-full relative px-5 md:px-20 lg:px-16 max-w-screen-xl mx-auto">
+          <div className="relative h-full flex flex-col justify-center">
+            <div className="relative w-fit mx-auto md:mx-0">
+              <div
+                className="absolute inset-0 pointer-events-none"
+                style={{ background: gradientBg, zIndex: 1 }}
+              />
+              <div
+                className="relative flex flex-col align-start gap-4 md:gap-5"
+                style={{ zIndex: 3 }}
               >
-                {subtitle}
-              </p>
-            )}
-          </div>
-
-          {/* Desktop: Left-aligned, vertically centered */}
-          <div className="hidden md:flex h-full flex-col justify-center">
-            <div className="w-fit">
-              <h1
-                className="text-hero font-regular mb-20 text-left"
-                style={{ color: colors.title }}
-              >
-                {titleElements}
-              </h1>
-              {subtitle && (
-                <p
-                  className="text-sm font-light max-w-xs text-left"
-                  style={{ color: colors.subtitle }}
+                <h1
+                  className="text-hero font-regular"
+                  style={{ color: colors.title }}
                 >
-                  {subtitle}
-                </p>
-              )}
+                  {/* Mobile: inline-block, Desktop: block */}
+                  {title.map((word, i) => (
+                    <span key={i} className="block">
+                      {word}
+                    </span>
+                  ))}
+                </h1>
+                {subtitle && (
+                  <p
+                    className="text-sm font-light max-w-xs mx-auto md:mx-0 text-left"
+                    style={{ color: colors.subtitle }}
+                  >
+                    {subtitle}
+                  </p>
+                )}
+              </div>
             </div>
           </div>
         </div>

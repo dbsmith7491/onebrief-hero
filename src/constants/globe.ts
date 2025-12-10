@@ -17,4 +17,3 @@ export const DEFAULT_CAMERA_POSITION = {
 
 // Camera transition duration (ms)
 export const CAMERA_TRANSITION_DURATION = 1000;
-
